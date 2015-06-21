@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Introduction
 
 Boilerplate for Angular2 learning
@@ -17,3 +18,6 @@ gulp serve
 # License
 
 MIT
+=======
+# ANGULAR-Test-EVE-API
+>>>>>>> 510ab6c97da38c28565475a3e0b5aaf05d4e8b0f
