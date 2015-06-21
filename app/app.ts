@@ -2,13 +2,23 @@
 import {Component, View, bootstrap} from 'angular2/angular2';
 
 @Component({
-  selector: 'app'
+    selector: 'eve-online-checker'
 })
 @View({
-  template: '<h1>Welcome !</h1>'
+    templateUrl: 'templates/EVEOnlineChecker.html',
 })
-class App {
+class EVEOnlineChecker {
+    apiKeyID: string;
+    apiVerificationCode: string;
 
+    storeApiCredentials(event, api_keyID, api_verifCode){
+        event.preventDefault();
+
+        this.apiKeyID = api_keyID;
+        this.apiVerificationCode = api_verifCode;
+        console.log('Key ID : '+ this.apiKeyID);
+        console.log('Verification code : '+ this.apiVerificationCode);
+    }
 }
 
-bootstrap(App);
+bootstrap(EVEOnlineChecker);
