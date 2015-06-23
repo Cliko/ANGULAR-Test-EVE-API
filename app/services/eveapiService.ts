@@ -5,11 +5,7 @@ export class EveApiService {
         return this.characters;
     }
 
-    addCharacter(characterID: Number, characterName: String, corporationID: Number, corporationName: String, allianceID: Number, allianceName: String, factionID: Number, factionName: String) {
-        this.characters.push(new Character(characterID, characterName, corporationID, corporationName, allianceID, allianceName, factionID, factionName));
-    }
-
-    requestHttp(keyId,vCode){
+    addCharacter(keyId,vCode){
         function loadXMLDoc(XMLname)
         {
             var xmlDoc;
@@ -73,7 +69,15 @@ export class EveApiService {
         };
         results = xmlToJson(results);
         var characters = results.eveapi.result.key.rowset;
-        return characters;
+            var charId = characters.row["@attributes"].characterID;
+            var charName = characters.row["@attributes"].characterName;
+            var alId = characters.row["@attributes"].allianceID;
+            var alName = characters.row["@attributes"].allianceName;
+            var corpId = characters.row["@attributes"].corporationID;
+            var corpName = characters.row["@attributes"].corporationName;
+            var factionId = characters.row["@attributes"].factionID;
+            var factionName = characters.row["@attributes"].factionName;
+            this.characters.push(new Character(charId, charName, corpId, corpName, alId, alName, factionId, factionName));
     }
 
 }

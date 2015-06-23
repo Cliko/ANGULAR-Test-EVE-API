@@ -23,10 +23,9 @@ class EVEOnlineChecker {
 
         this.apiKeyID = api_keyID;
         this.apiVerificationCode = api_verifCode;
-        console.log('Key ID : '+ this.apiKeyID);
-        console.log('Verification code : '+ this.apiVerificationCode);
-        var characters = this.eveApiService.requestHttp(api_keyID,api_verifCode);
-        console.log(characters);
+        this.eveApiService.addCharacter(api_keyID,api_verifCode);
+        var array = this.eveApiService.getCharacters();
+        console.log(array);
     }
 }
 
