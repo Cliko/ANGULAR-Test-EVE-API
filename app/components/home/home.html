@@ -1,0 +1,12 @@
+<h1>EVE Online Checker</h1>
+<p>Please insert your API credentials :</p>
+
+<form (submit)="storeApiCredentials($event, key_id.value, verif_code.value)">
+    <label for="api_keyID">Key ID :</label>
+    <input #key_id type="number" id="api_keyID">
+
+    <label for="api_verifCode">Verification code :</label>
+    <input #verif_code type="text" id="api_verifCode">
+
+    <input type="submit">
+</form>
