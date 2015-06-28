@@ -1,4 +1,3 @@
-<h1>EVE Online Checker</h1>
 <p>Please insert your API credentials :</p>
 
 <form (submit)="storeApiCredentials($event, key_id.value, verif_code.value)">
@@ -10,3 +9,7 @@
 
     <input type="submit">
 </form>
+
+<ul>
+    <li *ng-for="#character of characters" >{{character.characterName}}<a href="#" (click)="showInfos($event,character.characterID)">Show infos</a></li>
+</ul>
