@@ -1,7 +1,37 @@
-<section class="sample-app-content">
-    <nav>
-        <a router-link="home">Home</a>
-    </nav>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">EVE Online Checker</a>
+            <div class="nav-collapse collapse"><!--
+					<p class="navbar-text pull-right">
+						Logged in as <a href="#" class="navbar-link">Username</a>
+					</p>-->
+                <ul class="nav">
+                    <li class="active"><a router-link="home">Home</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
 
-    <router-outlet></router-outlet>
-</section>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Characters</li>
+                    <li *ng-for="#character of characters"><a href="#" (click)="showInfos($event,character.characterID)">{{character.characterName}}</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="span9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

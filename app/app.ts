@@ -1,5 +1,6 @@
 import {Component, View, bootstrap} from 'angular2/angular2';
 import {RouteConfig, RouterOutlet, RouterLink, routerInjectables} from 'angular2/router';
+import {EveApiService, Character} from 'services/eveapiService';
 
 import {Home} from 'components/home/home';
 import {CharacterInfos} from 'components/character/character';
@@ -16,7 +17,7 @@ import {CharacterInfos} from 'components/character/character';
     directives: [RouterOutlet, RouterLink]
 })
 class App {
-
+    characters : Array;
 }
 
 bootstrap(App, [routerInjectables]);
