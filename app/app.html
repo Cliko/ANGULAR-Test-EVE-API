@@ -19,19 +19,8 @@
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 60px;">
     <div class="row-fluid">
-        <div class="span3">
-            <div class="well sidebar-nav">
-                <ul class="nav nav-list">
-                    <li class="nav-header">Characters</li>
-                    <li *ng-for="#character of characters"><a href="#" (click)="showInfos($event,character.characterID)">{{character.characterName}}</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="span9">
             <router-outlet></router-outlet>
-        </div>
     </div>
 </div>

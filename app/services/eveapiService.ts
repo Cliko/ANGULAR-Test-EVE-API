@@ -13,6 +13,12 @@ export class EveApiService {
     getCharacters() {
         return this.characters;
     }
+    getCurrentCharacter() {
+        var result = [];
+        result[0] = this.currentCharacter;
+        result[1] = this.currentCharacterInfos;
+        return result;
+    }
 
     // Implémente le personnage sélectionné dans la variable actualCharacter
     choiceCharacter(charId){
@@ -57,16 +63,25 @@ export class EveApiService {
 
         results = this.xmlService.xmlToJson(results);
         var characters = results.eveapi.result.key.rowset;
+
+        function search(nameKey, myArray){
+            for (var i=0; i < myArray.length; i++) {
+                if (myArray[i].name === nameKey) {
+                    return myArray[i];
+                }
+            }
+        }
+
         if(!characters.row[0]) {
-            var charId = characters.row["@attributes"].characterID;
-            var charName = characters.row["@attributes"].characterName;
-            var alId = characters.row["@attributes"].allianceID;
-            var alName = characters.row["@attributes"].allianceName;
-            var corpId = characters.row["@attributes"].corporationID;
-            var corpName = characters.row["@attributes"].corporationName;
-            var factionId = characters.row["@attributes"].factionID;
-            var factionName = characters.row["@attributes"].factionName;
-            this.characters.push(new Character(charId, charName, corpId, corpName, alId, alName, factionId, factionName, keyId, vCode));
+                var charId = characters.row["@attributes"].characterID;
+                var charName = characters.row["@attributes"].characterName;
+                var alId = characters.row["@attributes"].allianceID;
+                var alName = characters.row["@attributes"].allianceName;
+                var corpId = characters.row["@attributes"].corporationID;
+                var corpName = characters.row["@attributes"].corporationName;
+                var factionId = characters.row["@attributes"].factionID;
+                var factionName = characters.row["@attributes"].factionName;
+                this.characters.push(new Character(charId, charName, corpId, corpName, alId, alName, factionId, factionName, keyId, vCode));
         }else{
             for(var i = 0; i < characters.row.length;i++){
                 var charId = characters.row[i]["@attributes"].characterID;

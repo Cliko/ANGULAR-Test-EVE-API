@@ -1,6 +1,5 @@
 import {Component, View, NgIf, NgFor} from 'angular2/angular2';
 import {EveApiService, Character} from 'services/eveapiService';
-import {Router, RootRouter} from 'angular2/router';
 
 
 @Component({
@@ -18,9 +17,11 @@ export class Home {
     apiVerificationCode: string;
     eveApiService : EveApiService;
     characters: Array;
+    character;
 
     constructor(eveApiService : EveApiService) {
         this.eveApiService = eveApiService;
+        this. addPage = 1;
     }
 
     storeApiCredentials(event, api_keyID, api_verifCode){
@@ -34,11 +35,15 @@ export class Home {
         console.log(this.characters);
 
     }
+    /* Fonction pour Router */
     showInfos(event,charId){
         event.preventDefault();
 
         this.eveApiService.choiceCharacter(charId);
         console.log(this.eveApiService.currentCharacter);
         this.eveApiService.addCharactersInfos(this.eveApiService.currentCharacter.keyId,this.eveApiService.currentCharacter.vCode,this.eveApiService.currentCharacter.characterID);
+        this.character = this.eveApiService.getCurrentCharacter();
+        console.log(this.character)
     }
+
 }

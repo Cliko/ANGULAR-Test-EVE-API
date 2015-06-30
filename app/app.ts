@@ -6,7 +6,8 @@ import {Home} from 'components/home/home';
 import {CharacterInfos} from 'components/character/character';
 
 @Component({
-    selector: 'app'
+    selector: 'app',
+    appInjector:[EveApiService]
 })
 @RouteConfig([
     { path: '/', component: Home, as: 'home' },
@@ -17,7 +18,18 @@ import {CharacterInfos} from 'components/character/character';
     directives: [RouterOutlet, RouterLink]
 })
 class App {
-    characters : Array;
+    eveApiService : EveApiService;
+    characters: Array;
+
+    constructor(eveApiService : EveApiService) {
+        this.eveApiService = eveApiService
+    }
+
+    checkCharacters(){
+        this.characters = this.eveApiService.characters;
+        console.log("test");
+    }
+
 }
 
 bootstrap(App, [routerInjectables]);

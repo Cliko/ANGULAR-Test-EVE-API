@@ -1,11 +1,28 @@
-<p>Please insert your API credentials :</p>
+<div class="span3">
+    <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+            <li class="nav-header">Characters</li>
+            <li *ng-for="#character of characters"><a href="#" (click)="showInfos($event,character.characterID)">{{character.characterName}}</a></li>
+        </ul>
+    </div>
+</div>
 
-<form (submit)="storeApiCredentials($event, key_id.value, verif_code.value)">
-    <label for="api_keyID">Key ID :</label>
-    <input #key_id type="number" id="api_keyID">
+<div [hidden]="addPage" class="span9" id="addPage">
+    <p>Please insert your API credentials :</p>
 
-    <label for="api_verifCode">Verification code :</label>
-    <input #verif_code type="text" id="api_verifCode">
+    <form (submit)="storeApiCredentials($event, key_id.value, verif_code.value)">
+        <label for="api_keyID">Key ID :</label>
+        <input #key_id type="number" id="api_keyID">
 
-    <input type="submit">
-</form>
+        <label for="api_verifCode">Verification code :</label>
+        <input #verif_code type="text" id="api_verifCode">
+
+        <input type="submit">
+    </form>
+</div>
+<div [hidden]="showInfos" class="span9">
+    <p>Infos</p>
+        <div *ng-for="infos of character" >
+            ISK : {{infos.wallet}}
+        </div>
+</div>
